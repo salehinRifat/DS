@@ -34,6 +34,7 @@ Node *coverArrtoDll(vector<int> &arr)
     }
     return head;
 }
+
 Node *insertFront(Node *head, int data)
 {
     Node *newNode = new Node(data, head, nullptr);
@@ -53,6 +54,26 @@ Node *insertEnd(Node *head, int data)
     }
     temp->next = newNode;
     newNode->back = temp;
+    return head;
+}
+Node* insertBeforeK(Node* head, int value, int k){
+    if(k==1){
+       return insertFront(head, value);
+    }
+    int cnt =0; 
+    Node* temp =  head;
+    while(temp->next != nullptr){
+        cnt++;
+        if(cnt==k)break;
+        temp = temp->next;
+    }
+    if(temp->next == nullptr){
+        return insertEnd(head, value);
+    }
+    Node* prev = temp->back;
+    Node* newNode = new Node(value,temp, prev);
+    prev->next = newNode;
+    temp->back = newNode;
     return head;
 }
 Node* deleteHead(Node* head){
@@ -117,6 +138,20 @@ Node* deleteKthEl( Node* head,int k){
     }
     return head;
 }
+void deleteNode(Node* temp){
+    Node* prev = temp->back;
+    Node* front = temp->next;
+    if(front == nullptr){
+        prev->next = nullptr;
+        temp->back = nullptr;
+        delete temp;
+        return;
+    }
+    prev->next = front;
+    front->back = prev;
+    temp->next = temp->back = nullptr;
+    delete temp;
+}
 Node *printDll(Node *head)
 {
     while (head != nullptr)
@@ -127,8 +162,8 @@ Node *printDll(Node *head)
 }
 int main()
 {
-    vector<int> arr = {2, 4, 8, 10, 11};
+    vector<int> arr = {2, 4, 8};
     Node *head = coverArrtoDll(arr);
-    head = deleteKthEl(head,6);
+    head = insertBeforeK(head, 12,4);
     printDll(head);
 }
