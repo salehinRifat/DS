@@ -67,9 +67,9 @@ Node* insertBeforeK(Node* head, int value, int k){
         if(cnt==k)break;
         temp = temp->next;
     }
-    if(temp->next == nullptr){
-        return insertEnd(head, value);
-    }
+    // if(temp->next == nullptr){
+    //     return insertEnd(head, value);
+    // }
     Node* prev = temp->back;
     Node* newNode = new Node(value,temp, prev);
     prev->next = newNode;
