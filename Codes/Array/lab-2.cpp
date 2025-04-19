@@ -10,7 +10,7 @@ int printMedian(int arr[], int n){
     else
         return (arr[n/2] + arr[(n-1)/2])/2;
 }
-//c++ program to Insert an item into a linear array
+//c++ program to Insert an item into a linear array //// 1 2 10 3 4 
 void insertElement(int arr[], int n, int pos, int ele){
     for(int i=n-1; i>=pos-1; i--){
         arr[i+1] = arr[i];
