@@ -21,6 +21,12 @@ public:
         arr[top] = val;
         return 1;
     }
+    int pop(){
+        if(top<0)
+            cout<<"Capacity Underflown"<<endl;
+        top--;
+        return arr[top+1];
+    }
     int peek() { 
         if (top < 0) { 
             cout << "Stack is Empty\n"; 
@@ -36,5 +42,6 @@ int main()
     s.push(10); 
     s.push(20); 
     s.push(30);
+    cout<<"The popped Value is "<<s.pop()<<endl;
     cout<<s.peek()<<endl;
 }
