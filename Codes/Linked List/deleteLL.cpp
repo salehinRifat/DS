@@ -37,51 +37,63 @@ Node *deleteFront(Node *head)
     delete temp;
     return head;
 }
-Node *deletek(Node* head, int k){
-    if(head == NULL) return head;
-    if(k==1){
+
+Node* deletek(Node* head, int k) {
+    if (head == NULL) return head;
+
+    if (k == 1) {
         Node* temp = head;
         head = head->next;
         delete temp;
         return head;
     }
-    Node* prev = NULL;
+
     Node* temp = head;
-    int cnt =0;
-    while(temp != nullptr){
-        cnt++;
-        if(cnt==k){
-            prev->next = prev->next->next;
-            delete temp;
+    int cnt = 1;
+
+    // Traverse to the (k-1)th node
+    while (temp != NULL && temp->next != NULL) {
+        if (cnt == k - 1) {
+            Node* toDelete = temp->next;
+            temp->next = temp->next->next;
+            delete toDelete;
             break;
         }
-        prev = temp;
         temp = temp->next;
+        cnt++;
     }
+
     return head;
 }
 
-Node *deleteEl(Node* head, int el){
-    if(head == NULL) return head;
-    if(el==head->data){
+
+Node* deleteEl(Node* head, int el) {
+    if (head == NULL) return head;
+
+    // If head node is to be deleted
+    if (head->data == el) {
         Node* temp = head;
         head = head->next;
         delete temp;
         return head;
     }
-    Node* prev = NULL;
+
     Node* temp = head;
-    while(temp != nullptr){
-        if(el==temp->data){
-            prev->next = prev->next->next;
-            delete temp;
+
+    // Look ahead to the next node (temp->next), so we don't need 'prev'
+    while (temp->next != NULL) {
+        if (temp->next->data == el) {
+            Node* toDelete = temp->next;
+            temp->next = temp->next->next;
+            delete toDelete;
             break;
         }
-        prev = temp;
         temp = temp->next;
     }
+
     return head;
 }
+
 
 Node * removeLast(Node* head){
     if(head==nullptr || head->next == nullptr)
