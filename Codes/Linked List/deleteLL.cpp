@@ -117,7 +117,7 @@ int main()
     first->next = second;
     second->next = third;
 
-    head = deleteEl(head,2);
+    head = deletek(head,2);
 
     traverseList(head);
 }
