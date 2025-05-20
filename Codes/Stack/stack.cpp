@@ -42,7 +42,7 @@ public:
         return a[top]; 
     } 
 
-    bool isEmpty() { 
+    bool empty() { 
         return top < 0; 
     } 
 }; 
@@ -60,7 +60,7 @@ int main() {
     cout << "Top element is: " << s.peek() << endl; 
 
     cout << "Elements present in stack: "; 
-    while (!s.isEmpty()) { 
+    while (!s.empty()) { 
         cout << s.peek() << " "; 
         s.pop(); 
     } 

@@ -79,6 +79,6 @@ int main()
     first->next = second;
     second->next = last;
     last->next = head;
-    last = insertPosition(last, 2, 100);
+    last = insertPosition(last, 5, 100);
     printLL(last);
 }

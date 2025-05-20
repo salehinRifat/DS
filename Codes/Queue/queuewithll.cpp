@@ -32,12 +32,10 @@ public:
         Node* new_node = new Node(new_data);
         if (isEmpty()) {
             front = rear = new_node;
-            printQueue();
             return;
         }
         rear->next = new_node;
         rear = new_node;
-        printQueue();
     }
 
     // Function to remove an element from the queue
@@ -49,7 +47,6 @@ public:
         front = front->next;
         if (front == nullptr) rear = nullptr;
         delete temp;
-        printQueue();
     }
 
     // Function to print the current state of the queue
